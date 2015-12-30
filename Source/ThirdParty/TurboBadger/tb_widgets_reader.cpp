@@ -14,6 +14,7 @@
 #include "tb_font_renderer.h"
 #include "tb_toggle_container.h"
 #include "image/tb_image_widget.h"
+#include "tb_menu_dropdown.h"
 
 namespace tb {
 
@@ -364,6 +365,14 @@ void TBSelectList::OnInflate(const INFLATE_INFO &info)
 
 TB_WIDGET_FACTORY(TBSelectDropdown, TBValue::TYPE_INT, WIDGET_Z_TOP) {}
 void TBSelectDropdown::OnInflate(const INFLATE_INFO &info)
+{
+    // Read items (if there is any) into the default source
+    ReadItems(info.node, GetDefaultSource());
+    TBWidget::OnInflate(info);
+}
+
+TB_WIDGET_FACTORY(TBMenuDropdown, TBValue::TYPE_INT, WIDGET_Z_TOP) {}
+void TBMenuDropdown::OnInflate(const INFLATE_INFO &info)
 {
     // Read items (if there is any) into the default source
     ReadItems(info.node, GetDefaultSource());

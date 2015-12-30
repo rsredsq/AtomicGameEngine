@@ -1,35 +1,35 @@
 definitions
-	menubutton		
+	menubutton
 		lp: height: 28
 		font: name: Vera
 		skin TBButton.flat
 TBLayout: distribution: gravity, axis: y
 	TBContainer: skin: AEContainer, gravity: all, id: mainframecontainer
-		TBLayout: distribution: gravity, axis: y		
+		TBLayout: distribution: gravity, axis: y
 			TBLayout: distribution: gravity
 				TBContainer: skin: AEContainer, gravity: left right
 					TBLayout: distribution: gravity
-						TBButton
+						TBMenuDropdown
 							@include definitions>menubutton
 							text File
 							id menu file
-						TBButton
+						TBMenuDropdown
 							@include definitions>menubutton
 							text Edit
 							id menu edit
-						TBButton
+						TBMenuDropdown
 							@include definitions>menubutton
 							text Build
 							id menu build
-						TBButton
+						TBMenuDropdown
 							@include definitions>menubutton
 							text Tools
 							id menu tools
-						TBButton
+						TBMenuDropdown
 							@include definitions>menubutton
 							text Help
 							id menu help
-						TBButton
+						TBMenuDropdown
 							@include definitions>menubutton
 							text Developer
 							id menu developer

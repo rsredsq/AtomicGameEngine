@@ -39,6 +39,7 @@
 #include <TurboBadger/tb_menu_window.h>
 #include <TurboBadger/tb_popup_window.h>
 #include <TurboBadger/image/tb_image_widget.h>
+#include <TurboBadger/tb_menu_dropdown.h>
 
 void register_tbbf_font_renderer();
 void register_stb_font_renderer();
@@ -83,6 +84,7 @@ using namespace tb;
 #include "UISelectDropdown.h"
 #include "UIMenuWindow.h"
 #include "UIPopupWindow.h"
+#include "UIMenuDropdown.h"
 
 #include "SystemUI/SystemUI.h"
 #include "SystemUI/SystemUIEvents.h"
@@ -640,6 +642,14 @@ UIWidget* UI::WrapWidget(tb::TBWidget* widget)
     // switch this to use a factory?
 
     // this is order dependent as we're using IsOfType which also works if a base class
+
+    if (widget->IsOfType<TBMenuDropdown>())
+    {
+        UIMenuDropdown* dropdownMenu = new UIMenuDropdown(context_, false);
+        dropdownMenu->SetWidget(widget);
+        widgetWrap_[widget] = dropdownMenu;
+        return dropdownMenu;
+    }
 
     if (widget->IsOfType<TBPopupWindow>())
     {

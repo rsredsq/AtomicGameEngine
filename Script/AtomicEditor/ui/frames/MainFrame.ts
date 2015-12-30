@@ -60,6 +60,8 @@ class MainFrame extends ScriptWidget {
 
         this.showWelcomeFrame(true);
 
+        this.initMenuButtons();
+
     }
 
     frameVisible(frame: Atomic.UIWidget): boolean {
@@ -111,18 +113,27 @@ class MainFrame extends ScriptWidget {
         if (this.menu.handlePopupMenu(target, refid))
             return true;
 
-        var src = MenuItemSources.getMenuItemSource(target.id);
+        //  var src = MenuItemSources.getMenuItemSource(target.id);
+        //
+        //  if (src) {
+        //
+        //      var menu = new Atomic.UIMenuWindow(target, target.id + " popup");
+        //      menu.show(src);
+        //      return true;
+        //
+        //  }
+        //
+        // return false;
 
-        if (src) {
+    }
 
-            var menu = new Atomic.UIMenuWindow(target, target.id + " popup");
-            menu.show(src);
-            return true;
-
-        }
-
-        return false;
-
+    initMenuButtons() {
+        (<Atomic.UIMenuDropdown> this.getWidget("menu file")).setSource(MenuItemSources.getMenuItemSource("menu file"));
+        (<Atomic.UIMenuDropdown> this.getWidget("menu edit")).setSource(MenuItemSources.getMenuItemSource("menu edit"));
+        (<Atomic.UIMenuDropdown> this.getWidget("menu build")).setSource(MenuItemSources.getMenuItemSource("menu build"));
+        (<Atomic.UIMenuDropdown> this.getWidget("menu tools")).setSource(MenuItemSources.getMenuItemSource("menu tools"));
+        (<Atomic.UIMenuDropdown> this.getWidget("menu developer")).setSource(MenuItemSources.getMenuItemSource("menu developer"));
+        (<Atomic.UIMenuDropdown> this.getWidget("menu help")).setSource(MenuItemSources.getMenuItemSource("menu help"));
     }
 
     disableProjectMenus() {
